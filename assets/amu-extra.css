@@ -119,3 +119,6 @@ header .amu-hdr-cta { padding-inline: .875rem; }
 .amu-list { list-style: none; }
 .amu-list li { position: relative; padding-left: 1.25rem; }
 .amu-list li::before { content: ""; position: absolute; left: 0; top: .75em; width: .55rem; height: 1px; background: currentColor; }
+
+/* Anchor targets clear the fixed header. */
+#pravila { scroll-margin-top: 7rem; }
