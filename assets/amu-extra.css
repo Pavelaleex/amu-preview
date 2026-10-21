@@ -1,0 +1,121 @@
+/* Additions on top of the compiled Astro/Tailwind build (content update, October 2026).
+   Uses the theme tokens defined in the inline stylesheet (--color-*, --font-*). */
+
+.amu-logo {
+  display: inline-block;
+  aspect-ratio: 543 / 312;
+  background: currentColor;
+  -webkit-mask: url(/amu-preview/img/logo-amu.svg) no-repeat center / contain;
+  mask: url(/amu-preview/img/logo-amu.svg) no-repeat center / contain;
+}
+.amu-logo-sm { height: 2.75rem; }
+.amu-logo-lg { height: 4.5rem; }
+
+/* Header actions: booking button, account, menu. Compact on phones so all three fit next to the logo. */
+.amu-hdr-actions { gap: .5rem; }
+header .amu-hdr-cta { padding-inline: .875rem; }
+@media (width < 23.4375rem) { header .amu-hdr-cta { display: none; } }
+/* The five-link menu only fits from 64rem; tablets keep the burger (it overflowed at 48–56rem before too). */
+@media (width >= 48rem) and (width < 64rem) {
+  header nav[aria-label="Основное меню"] { display: none; }
+  #nav-toggle { display: block; }
+  #nav-mobile:not([hidden]) { display: block; }
+}
+@media (width >= 40rem) {
+  .amu-hdr-actions { gap: .75rem; }
+  header .amu-hdr-cta { padding-inline: 1.5rem; }
+}
+
+/* The hero photo is bright at the top; shade it so the light header over it stays readable. */
+[data-hero]::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 1;
+  height: 10rem;
+  background: linear-gradient(#524c3373, #524c3300);
+  pointer-events: none;
+}
+
+.amu-chip {
+  display: inline-block;
+  border-radius: 9999px;
+  background: #f7caca99;
+  padding: .375rem 1rem;
+  font-size: .75rem;
+}
+
+.amu-promo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1.5rem;
+  border-radius: 1.75rem;
+  background: var(--color-reseda);
+  color: var(--color-ink);
+  padding: 1.25rem 1.5rem;
+}
+.amu-promo strong { font-family: var(--font-serif); font-weight: 500; font-size: 1.75rem; line-height: 1.1; }
+
+.amu-old {
+  margin-left: .4em;
+  font-size: .5em;
+  text-decoration: line-through;
+  opacity: .55;
+}
+
+.amu-table {
+  container-type: inline-size;
+  border-radius: 1rem;
+  background: #f3e7dbb3;
+}
+.amu-table li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: .125rem 1rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #524c331a;
+}
+.amu-table li:first-child { border-top: 0; }
+.amu-table .n { font-family: var(--font-serif); font-size: 1.35rem; }
+.amu-table .per { grid-column: 1; grid-row: 2; font-size: .75rem; color: var(--color-ink-soft); }
+.amu-table .sum { grid-column: 2; grid-row: 1 / 3; font-family: var(--font-serif); font-size: 1.5rem; white-space: nowrap; }
+.amu-table .buy { grid-column: 3; grid-row: 1 / 3; }
+@container (width >= 30rem) {
+  .amu-table li { grid-template-columns: 1.2fr 1fr auto auto; }
+  .amu-table .per { grid-column: 2; grid-row: 1; font-size: .875rem; }
+  .amu-table .sum { grid-column: 3; grid-row: 1; }
+  .amu-table .buy { grid-column: 4; grid-row: 1; }
+}
+
+.amu-grid-2 { display: grid; gap: 2.5rem; }
+@media (width >= 48rem) { .amu-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; } }
+
+.amu-trainers { display: grid; gap: 2rem; }
+@media (width >= 40rem) { .amu-trainers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.amu-mono {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-pearl-deep);
+  color: var(--color-ink);
+}
+.amu-mono span { font-family: var(--font-serif); font-size: clamp(4rem, 10vw, 6.5rem); letter-spacing: .06em; opacity: .75; }
+
+.amu-kids {
+  display: grid;
+  gap: 2rem;
+  border-radius: 2.5rem;
+  background: #f7caca8c;
+  padding: 3rem 1.75rem;
+}
+@media (width >= 48rem) { .amu-kids { grid-template-columns: 1.3fr 1fr; align-items: end; padding: 5rem 3.5rem; } }
+
+.amu-list { list-style: none; }
+.amu-list li { position: relative; padding-left: 1.25rem; }
+.amu-list li::before { content: ""; position: absolute; left: 0; top: .75em; width: .55rem; height: 1px; background: currentColor; }
